@@ -106,11 +106,16 @@ SizedBox(
 
 ### Text
 
-A widget that displays text on screen. The text can be styled through `style` property.
+A widget that displays text on screen. The text can be styled through `style` property. We can use `textAlign` property to align text. Text direction can be changed through `textDirection` property. We can set maximum lines through `maxLines` property. We can control the overflow text style through `overflow` property. By default if text is large it will be wrapped in multiple lines, to disable it we can set `softWrap` to `false`.
 
 ```dart
 Text(
   "Hello Flutter!!!",
+  textAlign: TextAlign.center,
+  textDirection: TextDirection.rtl,
+  maxLines: 1,
+  overflow: TextOverflow.clip,
+  softWrap: false,
   style: TextStyle(
     color: Colors.black,
     fontFamily: "Poppins",
@@ -123,11 +128,68 @@ Text(
 
 ### Image
 
+A widget to display image. Image source can be taken from assets, network, file, memory. To inscribe image inside its parent use `fit` property.
+
+```dart
+Image(
+  image: NetworkImage("url"),
+  fit: BoxFit.cover
+);
+```
+
 ### FilledButton
+
+A widget that displays a button with filled background. Its styles can be changed through `style` property using `FilledButton.styleFrom` object. It has `onPressed` property which takes a callback as value as executes it when user presses the button.
+
+```dart
+FilledButton(
+  onPressed: () {print("Button Pressed!!!")},
+  style: FilledButton.styleFrom(
+    backgroundColor: Colors.blue,
+    foregroundColor: Colors.white,
+    elevation: 5,
+    shadowColor: Colors.yellow,
+    padding: EdgeInsets.all(10.0),
+    side: BorderSide(color: Colors.purple, width: 3.0)
+  ),
+);
+```
 
 ### ElevatedButton
 
+A widget that displays a button with elevation. Its styles can be changed through `style` property using `ElevatedButton.styleFrom` object. It has `onPressed` property which takes a callback as value as executes it when user presses the button.
+
+```dart
+ElevatedButton(
+  onPressed: () {print("Button Pressed!!!")},
+  style: ElevatedButton.styleFrom(
+    backgroundColor: Colors.blue,
+    foregroundColor: Colors.white,
+    elevation: 5,
+    shadowColor: Colors.yellow,
+    padding: EdgeInsets.all(10.0),
+    side: BorderSide(color: Colors.purple, width: 3.0)
+  ),
+);
+```
+
 ### TextButton
+
+A widget that displays a button with text only and no default styles for button. Its styles can be changed through `style` property using `TextButton.styleFrom` object. It has `onPressed` property which takes a callback as value as executes it when user presses the button.
+
+```dart
+TextButton(
+  onPressed: () {print("Button Pressed!!!")},
+  style: TextButton.styleFrom(
+    backgroundColor: Colors.blue,
+    foregroundColor: Colors.white,
+    elevation: 5,
+    shadowColor: Colors.yellow,
+    padding: EdgeInsets.all(10.0),
+    side: BorderSide(color: Colors.purple, width: 3.0)
+  ),
+);
+```
 
 ### Column
 
