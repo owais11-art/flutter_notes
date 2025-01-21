@@ -139,7 +139,7 @@ Image(
 
 ### FilledButton
 
-A widget that displays a button with filled background. Its styles can be changed through `style` property using `FilledButton.styleFrom` object. It has `onPressed` property which takes a callback as value as executes it when user presses the button.
+A widget that displays a button with filled background. Its styles can be changed through `style` property using `FilledButton.styleFrom` object. It has `onPressed` property which takes a callback as value and executes it when user presses the button.
 
 ```dart
 FilledButton(
@@ -157,7 +157,7 @@ FilledButton(
 
 ### ElevatedButton
 
-A widget that displays a button with elevation. Its styles can be changed through `style` property using `ElevatedButton.styleFrom` object. It has `onPressed` property which takes a callback as value as executes it when user presses the button.
+A widget that displays a button with elevation. Its styles can be changed through `style` property using `ElevatedButton.styleFrom` object. It has `onPressed` property which takes a callback as value and executes it when user presses the button.
 
 ```dart
 ElevatedButton(
@@ -175,7 +175,7 @@ ElevatedButton(
 
 ### TextButton
 
-A widget that displays a button with text only and no default styles for button. Its styles can be changed through `style` property using `TextButton.styleFrom` object. It has `onPressed` property which takes a callback as value as executes it when user presses the button.
+A widget that displays a button with text only and no default styles for button. Its styles can be changed through `style` property using `TextButton.styleFrom` object. It has `onPressed` property which takes a callback as value and executes it when user presses the button.
 
 ```dart
 TextButton(
