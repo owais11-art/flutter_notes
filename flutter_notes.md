@@ -106,6 +106,16 @@ SizedBox(
 
 ### FractionallySizedBox
 
+A widget that can size relatively to the space available. Sizes can be changed through `widthFactor` and `heightFactor` properties. `0` means zero percent and `1` means hundred percent.
+
+```dart
+FractionallySizedBox(
+  widthFactor: 0.5, // 50%
+  height: 0.413 // 41.3%
+  child: Container(...)
+);
+```
+
 ### Text
 
 A widget that displays text on screen. The text can be styled through `style` property. We can use `textAlign` property to align text. Text direction can be changed through `textDirection` property. We can set maximum lines through `maxLines` property. We can control the overflow text style through `overflow` property. By default if text is large it will be wrapped in multiple lines, to disable it we can set `softWrap` to `false`.
