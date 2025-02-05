@@ -279,6 +279,43 @@ Positioned(
 
 ### ListView
 
+A widget that paints a scrollable list on the screen. By default it is scrolled vertically but we can change it through `scrollDirection` property by setting it to `Axis.horizontal`. User scrolls the list from top to bottom or left to right depending on the scroll direction but setting `reverse` property to `true`, user will scroll the list from bottom to top or right to left depending on the scroll direction. To set the extent(size in scroll direction) of children use `itemExtent` property. For creating `ListView` dynamically use `ListView.builder` and provide `itemCount` number of items in list and `itemBuider` callback for creating single item. For listening to the scrolling of `ListView` assign `ScrollController` object to the `controller` property and call `addListener` method on the object which takes a callback as an argument which will be executed every time `ListView` is scrolled.
+
+```dart
+class _MyListView extends State<MyListView>{
+  final List<Post> _posts = [];
+  final ScrollController _scrollController = ScrollController();
+  /*
+    _scrollController.jumpTo(<position>) -> jumps to given position
+    _scrollController.animateTo(<position>, <duration>, <curve>) -> animates to given position
+    _scrollController.moveTo(<position>, <duration>, <curve>) -> animates to given position if duration is given else jumps to the given position
+  */
+  void initState() {
+    _scrollController.addListener(() {
+      var offset = _scrollController.offset; // returns how much has been scrolled in pixels
+      var sameAsOffset = _scrollController.position.pixels; // also returns how much has been scrolled in pixels
+      var minScrollExtent = _scrollController.position.minScrollExtent; // returns how much has been scrolled when ListView is at start
+      var maxScrollExtent = _scrollController.position.maxScrollExtent; // returns how much has been scrolled when ListView is at end
+    });
+    super.initState();
+  }
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      scrollDirection: Axis.vertical,
+      reverse: false,
+      itemExtent: 40.0,
+      itemCount: _posts.length,
+      itemBuilder: (context, index) {...},
+      controller: _scrollController
+    );
+  }
+}
+```
+
 ### GridView
 
 ### ClipRRect
