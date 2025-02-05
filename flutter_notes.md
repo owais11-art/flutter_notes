@@ -241,7 +241,7 @@ A widget that arranges its children by putting them on top of one another. By de
 
 `StackFit.expand` means that children will take maximum dimension available. If `Stack` is 300x400 then children will also be 300x400.
 
-`StackFit.passthrough` means that dimensions are passed to the children unmodifed.
+`StackFit.passthrough` means that dimensions are passed to the children unmodified.
 
 ```dart
 Stack(
@@ -253,7 +253,7 @@ Stack(
 
 ### Positioned
 
-A widget that can postion itself within `Stack`. Positions can be changed through `top`, `bottom`, `left`, `right` properties. Dimensions can be changed through `width` and `height` properties.
+A widget that can position itself within `Stack`. Positions can be changed through `top`, `bottom`, `left`, `right` properties. Dimensions can be changed through `width` and `height` properties.
 
 ```dart
 Positioned(
