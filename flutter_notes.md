@@ -104,6 +104,8 @@ SizedBox(
 );
 ```
 
+### FractionallySizedBox
+
 ### Text
 
 A widget that displays text on screen. The text can be styled through `style` property. We can use `textAlign` property to align text. Text direction can be changed through `textDirection` property. We can set maximum lines through `maxLines` property. We can control the overflow text style through `overflow` property. By default if text is large it will be wrapped in multiple lines, to disable it we can set `softWrap` to `false`.
@@ -193,11 +195,81 @@ TextButton(
 
 ### Column
 
+A widget that arranges its children vertically. In this widget y-axis is considered main axis and x-axis is considered cross axis. Children can be aligned in main axis through `mainAxisAlignment` property and in cross axis through `crossAxisAlignment` property. Spacing between children can be set through `spacing` property. By default `Column` takes the maximum space available vertically but if we want `Column` to take the space equal to the content inside it we can use `mainAxisSize` property and set it to `MainAxisSize.min`. By default `Column` lays out its children from top to bottom, to reverse this order use `verticalDirection` property and set it to `VerticalDirection.up`.
+
+```dart
+Column(
+  mainAxisAlignment: MainAxisAlignment.start,
+  crossAxisAlignment: CrossAxisAlignment.center,
+  spacing: 10.0,
+  mainAxisSize: MainAxisSize.max,
+  verticalDirection: VerticalDirection.down,
+  children: [...]
+);
+```
+
 ### Row
+
+A widget that arranges its children horizontally. In this widget x-axis is considered main axis and y-axis is considered cross axis. Children can be aligned in main axis through `mainAxisAlignment` property and in cross axis through `crossAxisAlignment` property. Spacing between children can be set through `spacing` property. By default `Row` takes the maximum space available horizontally but if we want `Row` to take the space equal to the content inside it we can use `mainAxisSize` property and set it to `MainAxisSize.min`.
+
+```dart
+Row(
+  mainAxisAlignment: MainAxisAlignment.start,
+  crossAxisAlignment: CrossAxisAlignment.center,
+  spacing: 10.0,
+  mainAxisSize: MainAxisSize.max,
+  children: [...]
+);
+```
+
+### Expanded
+
+A widget that takes the remaining space within `Column` or `Row` after, unexpanded children has taken their space. If we have more than one `Expanded` widgets then by default remaining space will distributed equally between them. We can set the fraction of space that an `Expanded` widget can take from the remaining space through `flex` property.
+
+```dart
+Expanded(
+  flex: 1,
+  child: Container(...)
+);
+```
 
 ### Stack
 
+A widget that arranges its children by putting them on top of one another. By default its children are positioned at top left of the `Stack`, this can be changed through `alignment` property. To control the sizing of children inside `Stack` use `fit` property. `fit` can take one of three values `StackFit.loose`, `StackFit.expand`, `StackFit.passthrough`.
+
+`StackFit.loose` means that the children can have dimensions between 0x0 and the dimensions of `Stack` e.g; if `Stack` is 300x400 then children can have dimensions between 0x0 and 300x400.
+
+`StackFit.expand` means that children will take maximum dimension available. If `Stack` is 300x400 then children will also be 300x400.
+
+`StackFit.passthrough` means that dimensions are passed to the children unmodifed.
+
+```dart
+Stack(
+  alignment: Alignment.topCenter,
+  fit: StackFit.loose,
+  children: [...]
+);
+```
+
 ### Positioned
+
+A widget that can postion itself within `Stack`. Positions can be changed through `top`, `bottom`, `left`, `right` properties. Dimensions can be changed through `width` and `height` properties.
+
+```dart
+Positioned(
+  top: 10.0,
+  bottom: 10.0,
+  left: 10.0,
+  right: 10.0,
+  width: 200.0,
+  height: 250.0,
+  child: Text("Positioned Text!!!")
+);
+```
+
+### ListView
+
+### GridView
 
 ### ClipRRect
 
@@ -210,6 +282,4 @@ TextButton(
 ### DropdownButtonFormField
 
 ### DropdownMenuItem
-
-### GestureDetector
 
