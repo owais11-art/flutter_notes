@@ -318,6 +318,52 @@ class _MyListView extends State<MyListView>{
 
 ### GridView
 
+A widget that creates a scrollable with multiple number of columns. Padding to the `GridView` is given through `padding` property. To change scroll direction use `scrollDirection` property. User scrolls the `GridView` from top to bottom or left to right depending on the scroll direction but setting `reverse` property to `true`, user will scroll the `GridView` from bottom to top or right to left depending on the scroll direction. To create a grid with fixed number of columns use `GridView.count`. To set the number of columns use `crossAxisCount` property. To create a grid based on the given extent for each child use `GridView.extent`. To set the extent for each child use `maxCrossAxisExtent` ***extent is width when scroll direction is vertical and height when scroll direction is horizontal***. We can also give spacing between children in main and cross axis using `mainAxisSpacing` and `crossAxisSpacing` respectively. To create a grid dynamically use `GridView.builder` and provide number of children through `itemCount` property and `itemBuilder` callback that is responsible for creating single item. To create `GridView.builder` with fixed number of columns use `gridDelegate` property and assign it `SliverGridDelegateWithFixedCrossAxisCount` object and pass `crossAxisCount` as argument to this object. To create `GridView.builder` based on the given extent for each child use `gridDelegate` property assign it `SliverGridDelegateWithMaxCrossAxisExtent` object and pass `maxCrossAxisExtent` as argument to this object. Both `SliverGridDelegateWithFixedCrossAxisCount` and `SliverGridDelegateWithMaxCrossAxisExtent` can take `mainAxisSpacing` and `crossAxisSpacing` as parameters.
+
+```dart
+GridView.count(
+  padding: EdgeInsets.all(8.0),
+  crossAxisCount: 3,
+  mainAxisSpacing: 10.0,
+  crossAxisSpacing: 10.0,
+  children: [...]
+);
+
+GridView.extent(
+  padding: EdgeInsets.all(8.0),
+  maxCrossAxisExtent: 150.0,
+  mainAxisSpacing: 10.0,
+  crossAxisSpacing: 10.0,
+  children: [...]
+);
+
+// Dynamic fixed columns
+GridView.builder(
+  padding: EdgeInsets.all(8.0),
+  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 3,
+    mainAxisSpacing: 10.0,
+    crossAxisSpacing: 10.0,
+  ),
+  itemCount: _images.length,
+  itemBuilder: (context, index) {...}
+);
+
+// Dynamic based on extent
+GridView.builder(
+  padding: EdgeInsets.all(8.0),
+  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+    maxCrossAxisExtent: 150.0,
+    mainAxisSpacing: 10.0,
+    crossAxisSpacing: 10.0,
+  ),
+  itemCount: _images.length,
+  itemBuilder: (context, index) {...}
+);
+```
+
+### ClipRect
+
 ### ClipRRect
 
 ### TextField
