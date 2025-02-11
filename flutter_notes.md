@@ -417,7 +417,83 @@ TextField(
 
 ### Form
 
+A widget that can contain multiple form fields. It makes form handling convenient and easy. Using this widget we can easily do form validations and form resets. For that we need to assign `GlabalKey` of generic type `FormState` to `key` property of `Form`. To validate form fields we can execute `validate` method on `_formKey.currentState`.
+
+```dart
+Form(
+  key: _formKey, // Key of type GlobalKey<FormState>
+  child: ...
+);
+```
+
 ### TextFormField
+
+It is similar to `TextField` but is commonly use as descendant of `Form`. It also provides a way for validation through `validator` callback. `onSaved` callback is used to save the value of this field in a state. In this widget use `onFieldSubmitted` instead of `onSubmitted` callback.
+
+```dart
+TextFormField(
+  validator: (value) {...},
+  onSaved: (value) {...},
+  onFieldSubmitted: (value) {...}
+);
+```
+
+### DatePicker
+
+This widget displays a material themed date picker. To show date picker we have to execute `showDatePicker` function which requires `context`, `initialDate`, `firstDate` and `lastDate` properties. It is an asynchronous function it returns the selected date if user clicks confirm on date picker and returns `null` if user clicks cancel on date picker. To change styling we can use `DatePickerThemeData` inside `ThemeData`.
+
+```dart
+FilledButton(
+  onPressed: () async {
+    var dateSelected = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+      barrierColor: Colors.black.withAlpha(90), // Modal overlay color
+      builder: (context, child) => Theme(
+        // For dark theme use ThemeData().dark().copyWith()
+        // These styles can also be applied in MaterialApp's theme and darkTheme properties
+        data: ThemeData(
+          datePickerTheme: DatePickerThemeData(
+            headerForegroundColor: Color(0xFF041611),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0)
+            ),
+            backgroundColor: Color(0xFFdcf9ef),
+            dividerColor: Color(0xFF137655).withAlpha(100),
+            weekdayStyle: TextStyle(color: Color(0xFF041611)),
+            inputDecorationTheme: InputDecorationTheme(
+              labelStyle: TextStyle(color: Color(0xFF041611)),
+              floatingLabelStyle: TextStyle(color: Color(0xFF041611)),
+              focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0xFF137655))),
+              border: OutlineInputBorder(borderSide: BorderSide(color: Color(0xFF041611)))
+            ),
+            cancelButtonStyle: ButtonStyle(
+              foregroundColor: WidgetStateProperty.resolveWith<Color>(
+                (widgetState) => Color(0xFF137655)) 
+            ),
+            confirmButtonStyle: ButtonStyle(
+              foregroundColor: WidgetStateProperty.resolveWith<Color>(
+                (widgetState) => Color(0xFF137655)) 
+            ),
+            todayBackgroundColor: WidgetStateProperty.resolveWith<Color>(
+                (widgetState) => Color(0xFF4a20cb)),
+            todayForegroundColor: WidgetStateProperty.resolveWith<Color>(
+                (widgetState) => Color(0xFFdcf9ef)),
+            yearForegroundColor: WidgetStateProperty.resolveWith<Color>(
+                (widgetState) => Color(0xFF041611)),
+            dayForegroundColor: WidgetStateProperty.resolveWith<Color>(
+                (widgetState) => Color(0xFF041611))
+          )
+        ),
+        child: child!
+      )
+    );
+  }
+  child: Text("Date Picker")
+);
+```
 
 ### DropdownButtonFormField
 
