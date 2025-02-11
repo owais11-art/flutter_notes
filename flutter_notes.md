@@ -495,6 +495,48 @@ FilledButton(
 );
 ```
 
+### TimePicker
+
+This widget displays a material themed time picker. To show time picker we have to execute `showTimePicker` function which requires `context` and `initialTime` properties. It is an asynchronous function it returns the selected time if user clicks confirm on time picker and returns `null` if user clicks cancel on time picker. To change styling we can use `TimePickerThemeData` inside `ThemeData`.
+
+```dart
+FilledButton(
+  onPressed: () async {
+    var selectedTime = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+      builder: (context, child) => Theme(
+        data: ThemeData(
+              timePickerTheme: TimePickerThemeData(
+          backgroundColor: Color(0xFFdcf9ef),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0)
+          ),
+          dayPeriodColor: Color(0xFF7288e9),
+          hourMinuteColor: Color(0xFF7288e9),
+          hourMinuteTextColor: Color(0xFF041611),
+          dialBackgroundColor: Color(0xFFa8f0d7),
+          dialHandColor: Color(0xFF137655),
+          dialTextColor: Color(0xFF041611),
+          helpTextStyle: TextStyle(color: Color(0xFF137655)),
+          cancelButtonStyle: ButtonStyle(
+            foregroundColor: WidgetStateProperty.resolveWith<Color>(
+              (widgetState) => Color(0xFF137655)) 
+          ),
+          confirmButtonStyle: ButtonStyle(
+            foregroundColor: WidgetStateProperty.resolveWith<Color>(
+              (widgetState) => Color(0xFF137655)) 
+          )
+        )
+        ),
+        child: child!
+      )
+    );
+  },
+  child: Text("Time Picker")
+);
+```
+
 ### DropdownButtonFormField
 
 ### DropdownMenuItem
