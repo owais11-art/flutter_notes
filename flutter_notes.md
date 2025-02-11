@@ -364,9 +364,56 @@ GridView.builder(
 
 ### ClipRect
 
+This widget prevents child from painting outside its bounds. E.g; If we have an `Image` inside `Center` and `widthFactor` of `Center` is less than `1.0` then `Image` will overflow from `Center`, to prevent this wrap `Center` with `ClipRect`.
+
+```dart
+ClipRect(
+  child: Center(
+    widthFactor: 0.5,
+    child: Image.network(...)
+  )
+);
+```
+
 ### ClipRRect
 
+This is same as `ClipRect` but it also lets us create rounded border.
+
+```dart
+ClipRRect(
+  borderRadius: BorderRadius.circular(8.0),
+  child: ...
+);
+```
+
 ### TextField
+
+This widget lets user enter data. It can be styled through `decoration` property. To listen to the changes while user is entering data use `onChanged` callback. To listen when user is done entering data by clicking done button on keypad use `onSubmitted` callback. To bind the `TextField` with a state, so that when user enters something in `TextField` that gets assigned to the state, create a state of type `TextEditingController` and assign it to the `controller` property of `TextField`. To control the focus state of `TextField` use `focusNode` property and assign it an object of type `FocusNode`. To hide the text inside `TextField` like in passwords use `obscureText` and set it to `true`. For styling text in `TextField` use `style` property.
+
+```dart
+TextField(
+  controller: _myController, // Object of type TextEditingController
+  focusNode: _myFocusNode, //Object of type FocusNode
+  style: TextStyle(fontSize: 18.0),
+  decoration: InputDecoration(
+    hintText: "Enter Something...", // placeholder text
+    hintStyle: TextStyle(color: Colors.black.withAlpha(90)), // styles for hintText
+    labelText: "Username", // Text for label of TextField
+    labelStyle: TextStyle(...), // styles for labelText
+    floatingLabelStyle: TextSTyle(...) // style is applied when labelText is floating at top of TextField
+    floatingLabelBehavior: FloatingLabelBehavior.auto, // manages the behaviour of labelText whether it always be floating or never or have default behavior
+    floatingLabelAlignment: FloatingLabelAlignment.start, // Placement of labelText either start or center
+    border: OutlineInputBorder(borderSide: BorderSide.none)), // Border of TextField
+    focusBorder: OutlineInputBorder(borderSide: BorderSide.none)), // Border when focused
+    errorBorder: OutlineInputBorder(borderSide: BorderSide.none)), // Border when error
+    enabledBorder: OutlineInputBorder(borderSide: BorderSide.none)), // Border when enabled
+    disabledBorder: OutlineInputBorder(borderSide: BorderSide.none)) // Border when disabled
+  ),
+  onChanged: (value) {...},
+  onSubmitted: (value) {...},
+  onTapOutside: (e) => _myFocusNode.unfocus()
+);
+```
 
 ### Form
 
