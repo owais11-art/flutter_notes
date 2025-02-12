@@ -243,6 +243,29 @@ Expanded(
 );
 ```
 
+### Flexible
+
+It is like `Expanded` but it does not take the remaining space right away but its parent which is `Row` or `Column` saves that space for `Flexible`.
+
+```dart
+Flexible(
+  flex: 1, // Will not take this space right away
+  fit: FlexFit.loose, // if set to FlexFit.tight then it will take the space like Expanded
+  child: Container(...)
+);
+```
+
+### Flex
+
+A widget that arranges its children vertically or horizontally depending on the value of `direction` property which can be either `Axis.horizontal` or `Axis.vertical`. All other properties are same as `Row` or `Column`.
+
+```dart
+Flex(
+  direction: Axis.vertical,
+  children: [...]
+);
+```
+
 ### Stack
 
 A widget that arranges its children by putting them on top of one another. By default its children are positioned at top left of the `Stack`, this can be changed through `alignment` property. To control the sizing of children inside `Stack` use `fit` property. `fit` can take one of three values `StackFit.loose`, `StackFit.expand`, `StackFit.passthrough`.
