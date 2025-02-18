@@ -411,7 +411,7 @@ ClipRRect(
 
 ### TextField
 
-This widget lets user enter data. It can be styled through `decoration` property. To listen to the changes while user is entering data use `onChanged` callback. To listen when user is done entering data by clicking done button on keypad use `onSubmitted` callback. To bind the `TextField` with a state, so that when user enters something in `TextField` that gets assigned to the state, create a state of type `TextEditingController` and assign it to the `controller` property of `TextField`. To control the focus state of `TextField` use `focusNode` property and assign it an object of type `FocusNode`. To hide the text inside `TextField` like in passwords use `obscureText` and set it to `true`. For styling text in `TextField` use `style` property.
+This widget lets user enter data. It can be styled through `decoration` property. To listen to the changes while user is entering data use `onChanged` callback. To listen when user is done entering data by clicking done button on keypad use `onSubmitted` callback. To bind the `TextField` with a state, so that when user enters something in `TextField` that gets assigned to the state, create a state of type `TextEditingController` and assign it to the `controller` property of `TextField`. To control the focus state of `TextField` use `focusNode` property and assign it an object of type `FocusNode`. To hide the text inside `TextField` like in passwords use `obscureText` and set it to `true`. For styling text in `TextField` use `style` property. For `TextField` to take whole space set `expands` property to `true` but make sure that `maxLines` and `minLines` properties are set to `null`. To align text vertically use `textAlignVertical` property.
 
 ```dart
 TextField(
